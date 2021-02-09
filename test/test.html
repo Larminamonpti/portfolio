@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bag {
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-color: #ff0;
+  position: relative;
+  top: 150px;
+  left: 150px;
+  cursor: pointer;
+}
+
+.holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 60px;
+  background-color: #ff0;
+  display: block;
+}
+
+.dot {
+  position: absolute;
+  left: 35px;
+  top: 0;
+}
+
+.dot::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  z-index: 1;
+}
+
+.dot1::after {
+  background-color: #333;
+}
+
+.dot2::after {
+  background-color: #00a;
+}
+
+.bag.open,
+.bag.open .mask {
+  background-color: #f00;
+}
+
+.bag.open .dot1 {
+  animation: xAxis1 2.5s cubic-bezier(0.02, 0.01, 0.21, 1);
+  animation-fill-mode: forwards;
+}
+
+.bag.open .dot1::after {
+  animation: yAxis1 2.5s cubic-bezier(0.3, 0.27, 0.07, 1.64);
+  animation-fill-mode: forwards;
+}
+
+.bag.open .dot2 {
+  animation: xAxis2 2.5s cubic-bezier(0.02, 0.01, 0.21, 1);
+  animation-fill-mode: forwards;
+}
+
+.bag.open .dot2::after {
+  animation: yAxis2 2.5s cubic-bezier(0.3, 0.27, 0.07, 1.64);
+  animation-fill-mode: forwards;
+}
+
+@keyframes yAxis1 {
+  50% {
+    animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+    transform: translateY(-100px);
+  }
+  100% {
+    animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+    transform: translateY(70px);
+  }
+}
+
+@keyframes xAxis1 {
+  100% {
+    animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    transform: translateX(150px);
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="bag">
+        <div class="dot dot1"></div>
+        <div class="dot dot2"></div>
+        <div class="mask"></div>
+      </div>
+
+    <script>
+
+    let bags = document.getElementsByClassName('bag')
+    let bag = bags[0];
+
+    bag.addEventListener('click', function(){
+        this.classList.add('open');
+    })
+
+//         $(document).ready(function() {
+//   $(".bag").on("click", function() {
+//     $(this).toggleClass("open");
+//   });
+// });
+</script>
+</body>
+</html>
