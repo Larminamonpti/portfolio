@@ -23,6 +23,6 @@ if($_POST['submit']){
 
 
 
-header('location:./portefolio.php#fourth');
+header('location:./index.php#fourth');
 
 ?>
